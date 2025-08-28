@@ -3,21 +3,19 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import AppRouter from "./routes/AppRouter";
 import "sweetalert2/dist/sweetalert2.min.css";
-import FormRegister from "./components/auth/FormRegister";
-import FormLogin from "./components/auth/FormLogin";
+import AuthModal from "./mod/AuthModal";
+import { Toaster } from "react-hot-toast";
 
 const App = () => {
-  return(
-  <>
-    <Header></Header>
-    <FormLogin></FormLogin>
-    <br /><br />
-    <hr />
-    <br /><br />
-    <FormRegister></FormRegister>
-    <AppRouter></AppRouter>;
-    <Footer></Footer>
-  </>);
+  return (
+    <>
+      <Header></Header>
+      <AuthModal></AuthModal>
+      <AppRouter></AppRouter>
+      <Footer></Footer>
+      <Toaster position="top-center" reverseOrder={false} />
+    </>
+  );
 };
 
 export default App;

@@ -2,7 +2,7 @@
 import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
+import toast from "react-hot-toast";
 import {
   obtenerUsuarios,
   guardarUsuarios,
@@ -28,16 +28,12 @@ function FormRegister() {
 
   const navigate = useNavigate();
 
-
   // 🚀 Función que maneja el submit del formulario
 
   function onSubmit(data) {
     try {
       if (data.password !== data.confirmPassword) {
-        Swal.fire({
-          title: "Las contraseñas no coinciden",
-          icon: "warning",
-        });
+        toast.error("Las contraseñas no coinciden");
         return;
       }
 
@@ -51,11 +47,7 @@ function FormRegister() {
 
       // 🚨 Validar email duplicado
       if (buscarUsuarioPorEmail(nuevoUsuario.email)) {
-        Swal.fire({
-          title: "Error",
-          text: "Ya existe un usuario con este correo",
-          icon: "error",
-        });
+        toast.error("Este usuario ya existe");
         return;
       }
 
@@ -64,22 +56,13 @@ function FormRegister() {
       guardarUsuarios([...usuarios, nuevoUsuario]);
 
       reset();
-      Swal.fire({
-        title: "Cuenta creada",
-        text: "El registro se completó exitosamente",
-        icon: "success",
-      });
-
+      toast.success("Usuario Creado!");
       navigate("/");
     } catch (error) {
-      Swal.fire({
-        title: "Error al registrar usuario",
-        icon: "error",
-      });
+      toast.error("Error al crear usuario");
       console.error(error);
     }
   }
-  
 
   // 🎨 Renderizado del formulario
   return (
@@ -103,9 +86,7 @@ function FormRegister() {
         <Form.Control.Feedback type="invalid">
           {errors.nombreUsuario?.message}
         </Form.Control.Feedback>
-        <Form.Control.Feedback type="valid">
-          Bien hecho!
-        </Form.Control.Feedback>
+        <Form.Control.Feedback type="valid">Bien hecho!</Form.Control.Feedback>
       </Form.Group>
 
       {/* Correo electrónico */}

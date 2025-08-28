@@ -2,8 +2,8 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useForm } from "react-hook-form";
-import Swal from "sweetalert2/dist/sweetalert2.js";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 import { buscarUsuarioPorEmail } from "../../services/storageService";
 
 function FormLogin() {
@@ -23,27 +23,18 @@ function FormLogin() {
 
   const navigate = useNavigate();
 
-  
   // 🚀 Función que maneja el submit del login
-   function onSubmit(data) {
+  function onSubmit(data) {
     // 🔎 Buscar usuario en localStorage
     const usuario = buscarUsuarioPorEmail(data.email);
 
     if (!usuario) {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "El usuario no existe en la base de datos",
-      });
+      toast.error("Usuario no encontrado.");
       return;
     }
 
     if (usuario.password !== data.password) {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Contraseña incorrecta",
-      });
+      toast.error("Contraseña incorrecta.");
       return;
     }
 
@@ -54,12 +45,7 @@ function FormLogin() {
 
     sessionStorage.setItem("usuario", JSON.stringify(usuarioLogueado));
 
-    Swal.fire({
-      title: "Usuario Logueado",
-      icon: "success",
-      draggable: true,
-    });
-
+    toast.success("Inición sesiada");
     reset();
     navigate("/");
   }
