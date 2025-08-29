@@ -13,7 +13,8 @@ const App = () => {
       <Header></Header>
       <AuthModal></AuthModal>
       <AdminTable></AdminTable>
-      <AppRouter></AppRouter>;<Footer></Footer>
+      <AppRouter></AppRouter>
+      <Footer></Footer>
       <Toaster position="top-center" reverseOrder={false} />
     </>
   );
