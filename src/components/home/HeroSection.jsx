@@ -69,7 +69,7 @@ const defaultGames = [
   {
     title: "The Elder Scrolls IV: Oblivion",
     description: "Un RPG clásico de mundo abierto.",
-    img: "https://i.pinimg.com/1200x/19/d3/a2/19d3a2ed47cdd1f8f9f394ae973558c2.jpg",
+    img: "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/04/oblivion-remastered-best-pc-graphics-settings.jpg",
     url: "https://store.steampowered.com/app/22330/The_Elder_Scrolls_IV_Oblivion_Game_of_the_Year_Edition/",
     interval: 2000,
     store: "Steam",
@@ -110,7 +110,7 @@ const HeroSection = () => {
     >
       <div style={{ width: "100%", maxWidth: "900px" }}>
         <Carousel indicators controls pause="hover">
-          {games.map((game, index) => (
+          {defaultGames.map((game, index) => (
             <Carousel.Item key={index} interval={game.interval}>
               <img
                 src={game.img}
@@ -121,6 +121,7 @@ const HeroSection = () => {
                   maxHeight: "60vh",
                   objectFit: "cover",
                   borderRadius: "10px",
+                  justifyContent: "center",
                 }}
               />
               <Carousel.Caption
