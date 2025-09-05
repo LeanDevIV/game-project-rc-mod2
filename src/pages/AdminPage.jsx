@@ -1,7 +1,12 @@
-import React from "react";
+import GamesTable from "../components/admin/GamesTable";
+import UsersTable from "../components/admin/UsersTable";
 
 const AdminPage = () => {
-  return <div>AdminPage</div>;
+  return <>
+  <GamesTable/>
+  <UsersTable/>
+
+  </>;
 };
 
 export default AdminPage;
