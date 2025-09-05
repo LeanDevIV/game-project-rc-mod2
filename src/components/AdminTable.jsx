@@ -2,11 +2,11 @@
 import React, { useState } from "react";
 import gamesDb from "../db/gamesDB";
 import { Table, Button, Form, Container, Row, Col } from "react-bootstrap";
-import useLocalStorage from "../utils/localStorage";
+import useStorage from "../utils/LocalStorage"
 import Swal from "sweetalert2";
 
 function AdminTable() {
-  const [games, setGames] = useLocalStorage("gamesDb", gamesDb);
+  const [games, setGames] = useStorage("gamesDb", gamesDb);
   const [editingIndex, setEditingIndex] = useState(null);
   const [newGame, setNewGame] = useState({
     titulo: "",
