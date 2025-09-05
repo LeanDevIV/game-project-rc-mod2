@@ -1,12 +1,11 @@
 // AdminTable.jsx
-import React, { useState } from "react";
-import gamesDb from "../db/gamesDB";
+import { useState } from "react";
 import { Table, Button, Form, Container, Row, Col } from "react-bootstrap";
-import useStorage from "../utils/LocalStorage"
+import useStorage from "../../utils/LocalStorage";
 import Swal from "sweetalert2";
 
-function AdminTable() {
-  const [games, setGames] = useStorage("gamesDb", gamesDb);
+function UsersTable() {
+  const [usuarios, setUsuarios] = useStorage("usuarios");
   const [editingIndex, setEditingIndex] = useState(null);
   const [newGame, setNewGame] = useState({
     titulo: "",
@@ -20,28 +19,31 @@ function AdminTable() {
   const handleChange = (e, field, index = null) => {
     const value = e.target.value;
     if (index !== null) {
-      const updated = [...games];
+      const updated = [...usuarios];
       updated[index][field] = value;
-      setGames(updated);
+      setUsuarios(updated);
     } else {
       setNewGame({ ...newGame, [field]: value });
     }
   };
 
   // Agregar juego
-  const handleAdd = () => {
-    if (!newGame.titulo)
-      return Swal.fire("Error", "El título es obligatorio", "error");
-    setGames([...games, { ...newGame, precio: parseFloat(newGame.precio) }]);
-    setNewGame({
-      titulo: "",
-      genero: "",
-      año: "",
-      precio: "",
-      descripcion: "",
-    });
-    Swal.fire("Agregado", "El juego se agregó correctamente", "success");
-  };
+//   const handleAdd = () => {
+//     if (!newGame.titulo)
+//       return Swal.fire("Error", "El título es obligatorio", "error");
+//     setUsuarios([
+//       ...usuarios,
+//       { ...newGame, precio: parseFloat(newGame.precio) },
+//     ]);
+//     setNewGame({
+//       titulo: "",
+//       genero: "",
+//       año: "",
+//       precio: "",
+//       descripcion: "",
+//     });
+//     Swal.fire("Agregado", "El juego se agregó correctamente", "success");
+//   };
 
   // Borrar juego
   const handleDelete = (index) => {
@@ -54,7 +56,7 @@ function AdminTable() {
       cancelButtonText: "Cancelar",
     }).then((result) => {
       if (result.isConfirmed) {
-        setGames(games.filter((_, i) => i !== index));
+        setUsuarios(usuarios.filter((_, i) => i !== index));
         Swal.fire("Eliminado", "El juego ha sido borrado.", "success");
       }
     });
@@ -83,59 +85,44 @@ function AdminTable() {
 
   return (
     <Container className="mt-4">
-      <h2 className="mb-3">Panel de Administración de Juegos</h2>
+      <h2 className="mb-3">Panel de Administración de usuarios</h2>
 
       <Table striped bordered hover responsive variant="dark">
         <thead>
           <tr>
-            <th>Título</th>
-            <th>Género</th>
-            <th>Año</th>
-            <th>Precio</th>
-            <th>Descripción</th>
-            <th>Acciones</th>
+            <th>id</th>
+            <th>nombre</th>
+            <th>email</th>
+            <th>acciones</th>
           </tr>
         </thead>
         <tbody>
-          {games.map((game, index) => (
+          {usuarios.map((usuario, index) => (
             <tr key={index}>
               {editingIndex === index ? (
                 <>
                   <td>
                     <Form.Control
                       type="text"
-                      value={game.titulo}
+                      value={usuario.id}
                       onChange={(e) => handleChange(e, "titulo", index)}
                     />
                   </td>
                   <td>
                     <Form.Control
                       type="text"
-                      value={game.genero}
+                      value={usuario.nombreUsuario}
                       onChange={(e) => handleChange(e, "genero", index)}
                     />
                   </td>
                   <td>
                     <Form.Control
                       type="number"
-                      value={game.año}
+                      value={usuario.email}
                       onChange={(e) => handleChange(e, "año", index)}
                     />
                   </td>
-                  <td>
-                    <Form.Control
-                      type="number"
-                      value={game.precio}
-                      onChange={(e) => handleChange(e, "precio", index)}
-                    />
-                  </td>
-                  <td>
-                    <Form.Control
-                      type="text"
-                      value={game.descripcion}
-                      onChange={(e) => handleChange(e, "descripcion", index)}
-                    />
-                  </td>
+
                   <td>
                     <Button
                       variant="success"
@@ -156,11 +143,9 @@ function AdminTable() {
                 </>
               ) : (
                 <>
-                  <td>{game.titulo}</td>
-                  <td>{game.genero}</td>
-                  <td>{game.año}</td>
-                  <td>${game.precio}</td>
-                  <td>{game.descripcion}</td>
+                  <td>{usuario.id}</td>
+                  <td>{usuario.nombreUsuario}</td>
+                  <td>{usuario.email}</td>
                   <td>
                     <Button
                       variant="warning"
@@ -185,7 +170,7 @@ function AdminTable() {
         </tbody>
       </Table>
 
-      <h4 className="mt-4">Agregar nuevo juego</h4>
+      {/* <h4 className="mt-4">Agregar nuevo juego</h4>
       <Row className="g-2 mt-2">
         <Col md={2}>
           <Form.Control
@@ -232,9 +217,9 @@ function AdminTable() {
             Agregar
           </Button>
         </Col>
-      </Row>
+      </Row> */}
     </Container>
   );
 }
 
-export default AdminTable;
+export default UsersTable;

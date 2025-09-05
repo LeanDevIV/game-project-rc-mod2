@@ -7,7 +7,7 @@ import {
   obtenerUsuarios,
   guardarUsuarios,
   buscarUsuarioPorEmail,
-} from "../../services/storageService";
+} from "../../services/userServices";
 
 function FormRegister() {
   // 📝 Configuración del hook useForm
@@ -39,8 +39,9 @@ function FormRegister() {
 
       const nuevoUsuario = {
         id: Date.now(),
-        nombreUsuario: data.nombreUsuario,
-        email: data.email,
+        nombreUsuario: data.nombreUsuario.trim(),
+
+        email: data.email.trim(),
         password: data.password,
         createdAt: new Date().toISOString(),
       };
@@ -74,7 +75,6 @@ function FormRegister() {
           type="text"
           placeholder="Ingrese su nombre de usuario"
           isInvalid={errors.nombreUsuario}
-          isValid={!errors.nombreUsuario}
           {...register("nombreUsuario", {
             required: "El campo es obligatorio",
             minLength: {
@@ -86,7 +86,6 @@ function FormRegister() {
         <Form.Control.Feedback type="invalid">
           {errors.nombreUsuario?.message}
         </Form.Control.Feedback>
-        <Form.Control.Feedback type="valid">Bien hecho!</Form.Control.Feedback>
       </Form.Group>
 
       {/* Correo electrónico */}

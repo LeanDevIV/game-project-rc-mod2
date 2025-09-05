@@ -1,11 +1,11 @@
 // AdminTable.jsx
-import React, { useState } from "react";
-import gamesDb from "../db/gamesDB";
+import { useState } from "react";
+import gamesDb from "../../constants/gamesDb";
 import { Table, Button, Form, Container, Row, Col } from "react-bootstrap";
-import useStorage from "../utils/LocalStorage"
+import useStorage from "../../utils/LocalStorage"
 import Swal from "sweetalert2";
 
-function AdminTable() {
+function GamesTable() {
   const [games, setGames] = useStorage("gamesDb", gamesDb);
   const [editingIndex, setEditingIndex] = useState(null);
   const [newGame, setNewGame] = useState({
@@ -237,4 +237,4 @@ function AdminTable() {
   );
 }
 
-export default AdminTable;
+export default GamesTable;

@@ -1,26 +1,31 @@
-// 📦 Dependencias
 import { useState } from "react";
 import { Button, Modal, Tabs, Tab } from "react-bootstrap";
 import FormLogin from "../components/auth/FormLogin";
 import FormRegister from "../components/auth/FormRegister";
+import  useStorage  from "../utils/LocalStorage";
 
 function AuthModal() {
+    const [user, setUser] = useStorage("user", null, "session");
   const [show, setShow] = useState(false);
-  const [activeKey, setActiveKey] = useState("login"); // 👈 controla la tab activa
+  const [activeKey, setActiveKey] = useState("login"); // controla la tab activa
 
   const handleClose = () => setShow(false);
   const handleShow = (key = "login") => {
-    setActiveKey(key); // 👈 al abrir podés elegir si arranca en login o registro
+    setActiveKey(key); // al abrir podés elegir si arranca en login o registro
     setShow(true);
   };
+//   const handleLogin = (usuarioLogueado) => {
+//   setUser(usuarioLogueado); // guarda en sessionStorage
+//   handleClose(); // cierra el modal
+// };
 
   return (
     <>
       {/* Botones para abrir el modal desde donde quieras */}
-      <Button variant="primary" onClick={() => handleShow("login")}>
+      <Button variant="outline-primary" onClick={() => handleShow("login")}>
         Iniciar sesión
       </Button>{" "}
-      <Button variant="secondary" onClick={() => handleShow("register")}>
+      <Button variant="outline-secondary" onClick={() => handleShow("register")}>
         Registrarse
       </Button>
 
@@ -36,9 +41,13 @@ function AuthModal() {
             activeKey={activeKey}
             onSelect={(k) => setActiveKey(k)}
             className="mb-3 d-flex flex-row"
+            fill
           >
             <Tab eventKey="login" title="Login">
-              <FormLogin />
+              <FormLogin onLogin={(user)=>{
+                setUser(user);
+                handleClose();}
+              }/>
             </Tab>
             <Tab eventKey="register" title="Registro">
               <FormRegister />

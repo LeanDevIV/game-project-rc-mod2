@@ -4,7 +4,8 @@ const gamesDb = [
     genero: "Aventura / Mundo Abierto",
     año: 2017,
     precio: 59.99,
-    descripcion: "Un juego de mundo abierto donde exploras Hyrule con total libertad, resolviendo puzzles, combatiendo enemigos y descubriendo secretos."
+    descripcion: "Un juego de mundo abierto donde exploras Hyrule con total libertad, resolviendo puzzles, combatiendo enemigos y descubriendo secretos.",
+    url:"https://i.pinimg.com/1200x/31/59/2d/31592dd53c1d4976a8d5cadfd3fd07c5.jpg"
   },
   {
     titulo: "God of War Ragnarök",
