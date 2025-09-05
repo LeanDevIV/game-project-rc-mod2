@@ -4,10 +4,11 @@ import Form from "react-bootstrap/Form";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import { buscarUsuarioPorEmail } from "../../services/storageService";
+import { buscarUsuarioPorEmail } from "../../services/userServices";
+import { useUser } from "../../context/UserContext";
 
-function FormLogin() {
-  // 📝 Configuración del hook useForm
+function FormLogin({ onLogin }) {
+  const { setUser } = useUser();
   const {
     register,
     handleSubmit,
@@ -44,8 +45,13 @@ function FormLogin() {
     };
 
     sessionStorage.setItem("usuario", JSON.stringify(usuarioLogueado));
+    setUser(usuarioLogueado);
+    toast.success("Inicio de sesión exitoso ✅");
+    // 👉 avisamos al modal
+    if (onLogin) {
+      onLogin(usuarioLogueado);
+    }
 
-    toast.success("Inición sesiada");
     reset();
     navigate("/");
   }

@@ -7,7 +7,7 @@ import { Container, Row, Col, Button, Image } from 'react-bootstrap';
 
 const Footer = () => {
   return (
-    <footer className="bg-dark text-light mt-auto fixed-bottom">
+    <footer className="bg-dark text-light mt-auto ">
       <Container className="py-4">
         <Row className="gy-3 align-items-center">
           {/* Columna 1: Logo */}
