@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export function useStorage(key, initialValue, type = "local") {
+  function useStorage(key, initialValue, type = "local") {
   // Elegimos qué storage usar
   const storage =
     type === "session" ? window.sessionStorage : window.localStorage;
@@ -25,3 +25,4 @@ export function useStorage(key, initialValue, type = "local") {
 
   return [storedValue, setStoredValue];
 }
+export default useStorage;

@@ -98,6 +98,8 @@ const HeroSection = () => {
   }, []);
 
   return (
+    <>
+    {/* carrousel */}
     <div
       style={{
         display: "flex",
@@ -146,6 +148,13 @@ const HeroSection = () => {
         </Carousel>
       </div>
     </div>
+    {/* catalogo */}
+     <div>
+    {games.map((game, index) => (
+      <p key={index}>{game.titulo}</p>
+    ))}
+  </div>
+    </>
   );
 };
 
