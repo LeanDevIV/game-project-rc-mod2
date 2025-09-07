@@ -2,13 +2,14 @@
 import { useState } from "react";
 import gamesDb from "../../constants/gamesDb";
 import { Table, Button, Form, Container, Row, Col } from "react-bootstrap";
-import useStorage from "../../utils/LocalStorage"
+import useStorage from "../../utils/LocalStorage";
 import Swal from "sweetalert2";
 
 function GamesTable() {
   const [games, setGames] = useStorage("gamesDb", gamesDb);
   const [editingIndex, setEditingIndex] = useState(null);
   const [newGame, setNewGame] = useState({
+    id: "",
     titulo: "",
     genero: "",
     año: "",
@@ -18,7 +19,8 @@ function GamesTable() {
 
   // Manejo de cambios
   const handleChange = (e, field, index = null) => {
-    const value = e.target.value;
+    const value =
+      e.target.type === "checkbox" ? e.target.checked : e.target.value;
     if (index !== null) {
       const updated = [...games];
       updated[index][field] = value;
@@ -34,6 +36,7 @@ function GamesTable() {
       return Swal.fire("Error", "El título es obligatorio", "error");
     setGames([...games, { ...newGame, precio: parseFloat(newGame.precio) }]);
     setNewGame({
+      id: "",
       titulo: "",
       genero: "",
       año: "",
@@ -63,6 +66,23 @@ function GamesTable() {
   // Editar
   const toggleEdit = (index) => {
     if (editingIndex === index) {
+      const game = games[index];
+      // Validación de campos vacíos
+      if (
+        !game.id.trim() ||
+        !game.titulo.trim() ||
+        !game.genero.trim() ||
+        !game.año ||
+        game.precio === "" ||
+        !game.descripcion.trim()
+      ) {
+        Swal.fire({
+          icon: "error",
+          title: "Campos incompletos",
+          text: "Por favor, completá todos los campos antes de guardar.",
+        });
+        return;
+      }
       Swal.fire({
         title: "¿Guardar cambios?",
         text: "Se actualizará la información del juego.",
@@ -88,10 +108,12 @@ function GamesTable() {
       <Table striped bordered hover responsive variant="dark">
         <thead>
           <tr>
+            <th>ID</th>
             <th>Título</th>
             <th>Género</th>
             <th>Año</th>
             <th>Precio</th>
+            <th>Publicado</th>
             <th>Descripción</th>
             <th>Acciones</th>
           </tr>
@@ -100,8 +122,16 @@ function GamesTable() {
           {games.map((game, index) => (
             <tr key={index}>
               {editingIndex === index ? (
+                // Edicion de tabla
                 <>
                   <td>
+                    <td>
+                      <Form.Control
+                        type="number"
+                        value={game.id}
+                        onChange={(e) => handleChange(e, "id", index)}
+                      />
+                    </td>
                     <Form.Control
                       type="text"
                       value={game.titulo}
@@ -130,6 +160,14 @@ function GamesTable() {
                     />
                   </td>
                   <td>
+                    <Form.Check
+                      type="checkbox"
+                      checked={game.publicado}
+                      onChange={(e) => handleChange(e, "publicado", index)}
+                      label="Publicado"
+                    />
+                  </td>
+                  <td>
                     <Form.Control
                       type="text"
                       value={game.descripcion}
@@ -155,11 +193,20 @@ function GamesTable() {
                   </td>
                 </>
               ) : (
+                // Renderización de tabla
                 <>
+                  <td>{game.id}</td>
                   <td>{game.titulo}</td>
                   <td>{game.genero}</td>
                   <td>{game.año}</td>
                   <td>${game.precio}</td>
+                  <td className="text-center">
+                    <Form.Check
+                      type="checkbox"
+                      checked={game.publicado}
+                      disabled
+                    />
+                  </td>
                   <td>{game.descripcion}</td>
                   <td>
                     <Button
@@ -187,6 +234,14 @@ function GamesTable() {
 
       <h4 className="mt-4">Agregar nuevo juego</h4>
       <Row className="g-2 mt-2">
+        <Col md={2}>
+          <Form.Control
+            type="text"
+            placeholder="ID"
+            value={newGame.id}
+            onChange={(e) => handleChange(e, "titulo")}
+          />
+        </Col>
         <Col md={2}>
           <Form.Control
             type="text"
