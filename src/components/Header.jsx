@@ -2,6 +2,7 @@
 import { Button, Container, Form, Nav, Navbar } from "react-bootstrap";
 
 import { NavLink, useNavigate } from "react-router";
+import logoNav from "../assets/logo.png";
 import AuthModal from "../mod/AuthModal";
 import { useUser } from "../context/UserContext";
 // import useStorage from "../utils/LocalStorage";
@@ -13,7 +14,9 @@ function Header() {
   return (
     <Navbar expand="lg" bg="dark" data-bs-theme="dark">
       <Container fluid>
-        <Navbar.Brand href="/">Rolling Games</Navbar.Brand>
+        <Navbar.Brand href="/">
+          <img src={logoNav} alt="Logo" style={{ width: "90px", height: "40px" }} />
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -36,6 +39,7 @@ function Header() {
                   </Nav.Link>
                   <Nav.Link disabled>Hola, {user.email}</Nav.Link>
                   <Button
+                  
                     onClick={() => {
                       setUser(null);
                       navigate("/");
@@ -57,15 +61,7 @@ function Header() {
             </Nav>
           </Nav>
           {<AuthModal></AuthModal>}
-          <Form className="d-flex">
-            <Form.Control
-              type="search"
-              placeholder="Buscar"
-              className="me-2"
-              aria-label="Search"
-            />
-            <Button variant="outline-success">Buscar</Button>
-          </Form>
+         
         </Navbar.Collapse>
       </Container>
     </Navbar>
