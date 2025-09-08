@@ -20,28 +20,29 @@ function AuthModal() {
       {/* Botones para abrir el modal desde donde quieras */}
       <Button variant="outline-primary" onClick={() => handleShow("login")}>
         Iniciar sesión
-      </Button>{" "}
+      </Button>
       <Button
         variant="outline-secondary"
         onClick={() => handleShow("register")}
       >
         Registrarse
       </Button>
+
       {/* Modal */}
       <Modal show={show} onHide={handleClose} centered>
-        <Modal.Header closeButton>
-          <Modal.Title>
+        <Modal.Header className="bg-dark text-white" closeButton>
+          <Modal.Title className="w-100 text-center">
             {activeKey === "login" ? "Iniciar sesión" : "Crear cuenta"}
           </Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body className="bg-dark text-white">
           <Tabs
             activeKey={activeKey}
             onSelect={(k) => setActiveKey(k)}
-            className="mb-3 d-flex flex-row"
+            className="mb-3 d-flex flex-row text-white justify-content-between"
             fill
           >
-            <Tab eventKey="login" title="Login">
+            <Tab className="text-white" eventKey="login" title="Login">
               <FormLogin
                 onLogin={(user) => {
                   setUser(user);
