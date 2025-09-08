@@ -8,6 +8,7 @@ import {
   guardarUsuarios,
   buscarUsuarioPorEmail,
 } from "../../services/userServices";
+import ROLES from "../../constants/roles";
 
 function FormRegister() {
   // 📝 Configuración del hook useForm
@@ -40,7 +41,7 @@ function FormRegister() {
       const nuevoUsuario = {
         id: Date.now(),
         nombreUsuario: data.nombreUsuario.trim(),
-
+        rol: ROLES.USUARIO,
         email: data.email.trim(),
         password: data.password,
         createdAt: new Date().toISOString(),
