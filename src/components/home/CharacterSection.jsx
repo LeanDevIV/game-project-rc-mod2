@@ -1,8 +1,9 @@
 import React from 'react'
+import Catalogo from '../Catalogo'
 
 const CharacterSection = () => {
   return (
-    <div>CharacterSection</div>
+    <div><Catalogo></Catalogo></div>
   )
 }
 
