@@ -53,8 +53,8 @@ function FormRegister() {
       }
 
       // Guardar usuario
-      const usuarios = obtenerUsuarios();
-      guardarUsuarios([...usuarios, nuevoUsuario]);
+      const user = obtenerUsuarios();
+      guardarUsuarios([...user, nuevoUsuario]);
 
       reset();
       toast.success("Usuario Creado!");

@@ -3,7 +3,7 @@ import { UserContext } from "./UserContext";
 export function UserProvider({ children }) {
   const [user, setUser] = useState(null);
   useEffect(() => {
-    const savedUser = sessionStorage.getItem("usuario");
+    const savedUser = sessionStorage.getItem("user");
     if (savedUser) {
       setUser(JSON.parse(savedUser));
     }
