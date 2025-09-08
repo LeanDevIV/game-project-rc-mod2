@@ -1,21 +1,15 @@
 // Dependencias
-import {
-  Button,
-  Container,
-  Form,
-  Nav,
-  Navbar,
+import { Button, Container, Form, Nav, Navbar } from "react-bootstrap";
 
-} from "react-bootstrap";
-
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 import AuthModal from "../mod/AuthModal";
 import { useUser } from "../context/UserContext";
 // import useStorage from "../utils/LocalStorage";
 
 // --------------
 function Header() {
-const {user,setUser}=useUser();
+  const navigate = useNavigate();
+  const { user, setUser } = useUser();
   return (
     <Navbar expand="lg" bg="dark" data-bs-theme="dark">
       <Container fluid>
@@ -34,22 +28,33 @@ const {user,setUser}=useUser();
               Favoritos
             </Nav.Link>
 
-            <Nav.Link as={NavLink} to="/admin" disabled>
-              Administración
-            </Nav.Link>
             <Nav className="ms-auto">
               {user ? (
                 <>
+                  <Nav.Link as={NavLink} to="/admin">
+                    Administración
+                  </Nav.Link>
                   <Nav.Link disabled>Hola, {user.email}</Nav.Link>
-                  <Button onClick={()=>setUser(null)}>Cerrar sesión</Button>
+                  <Button
+                    onClick={() => {
+                      setUser(null);
+                      navigate("/");
+                    }}
+                  >
+                    Cerrar sesión
+                  </Button>
                 </>
               ) : (
-                <Nav.Link variant="" className="ms-5">
-                  Estás como <strong>invitado</strong>
-                </Nav.Link>
+                <>
+                  <Nav.Link as={NavLink} to="/admin" disabled>
+                    Administración
+                  </Nav.Link>
+                  <Nav.Link variant="" className="ms-5">
+                    Estás como <strong>invitado</strong>
+                  </Nav.Link>
+                </>
               )}
             </Nav>
-           
           </Nav>
           {<AuthModal></AuthModal>}
           <Form className="d-flex">
