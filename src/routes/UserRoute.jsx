@@ -3,7 +3,7 @@ import { Navigate, Outlet } from "react-router-dom";
 
 const UserRoute = () => {
   // traer de la session
-  const usuarioLogueado = JSON.parse(sessionStorage.getItem("usuario") || null);
+  const usuarioLogueado = JSON.parse(sessionStorage.getItem("user") || null);
 
   if (usuarioLogueado) {
     return <Outlet></Outlet>;

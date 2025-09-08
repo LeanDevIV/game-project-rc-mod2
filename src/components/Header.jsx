@@ -15,7 +15,11 @@ function Header() {
     <Navbar expand="lg" bg="dark" data-bs-theme="dark">
       <Container fluid>
         <Navbar.Brand href="/">
-          <img src={logoNav} alt="Logo" style={{ width: "90px", height: "40px" }} />
+          <img
+            src={logoNav}
+            alt="Logo"
+            style={{ width: "90px", height: "40px" }}
+          />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
@@ -37,16 +41,6 @@ function Header() {
                   <Nav.Link as={NavLink} to="/admin">
                     Administración
                   </Nav.Link>
-                  <Nav.Link disabled>Hola, {user.email}</Nav.Link>
-                  <Button
-                  
-                    onClick={() => {
-                      setUser(null);
-                      navigate("/");
-                    }}
-                  >
-                    Cerrar sesión
-                  </Button>
                 </>
               ) : (
                 <>
@@ -60,8 +54,23 @@ function Header() {
               )}
             </Nav>
           </Nav>
-          {<AuthModal></AuthModal>}
-         
+          {user ? (
+            <>
+              <Nav>
+                <Nav.Link disabled>Hola, {user.nombre} 🤙🫡</Nav.Link>
+              </Nav>
+              <Button
+                onClick={() => {
+                  setUser(null);
+                  navigate("/");
+                }}
+              >
+                Cerrar sesión
+              </Button>
+            </>
+          ) : (
+            <AuthModal />
+          )}
         </Navbar.Collapse>
       </Container>
     </Navbar>
