@@ -1,160 +1,127 @@
 import React, { useEffect, useState } from "react";
-import { Carousel, Button } from "react-bootstrap";
+import { Container, Row, Col, Button, Image } from "react-bootstrap";
 
 const defaultGames = [
   {
-    title: "MX vs ATV Legends",
-    description: "Juego de motocross con acción extrema.",
-    img: "https://i.pinimg.com/1200x/2e/b9/9b/2eb99b0c3f42770852838477326645e2.jpg",
-    url: "https://store.steampowered.com/app/1315220/MX_vs_ATV_Legends/",
-    interval: 1000,
-    store: "Steam",
-  },
-  {
-    title: "Rocket League",
-    description: "Fútbol con autos, pura adrenalina.",
-    img: "https://i.pinimg.com/1200x/76/a8/c0/76a8c047633ace2f4e17412c5e1c44c4.jpg",
-    url: "https://store.epicgames.com/en-US/p/rocket-league",
-    interval: 1500,
-    store: "Epic Games",
-  },
-  {
-    title: "Football Manager 25",
-    description: "Gestión total de tu equipo favorito.",
-    img: "https://i.pinimg.com/1200x/03/0c/ed/030cedc84dad4f8c751ee774db742a2f.jpg",
-    url: "https://store.steampowered.com/app/231670/Football_Manager_2025/",
-    interval: 2000,
-    store: "Steam",
-  },
-  {
-    title: "WWE 2K25",
-    description: "El simulador de lucha libre más famoso.",
-    img: "https://i.pinimg.com/1200x/de/37/82/de3782b27c2b2f15a9d0838c2a206c63.jpg",
-    url: "https://store.steampowered.com/app/2410910/WWE_2K25/",
-    interval: 1000,
-    store: "Steam",
-  },
-  {
-    title: "NBA 2K25",
-    description: "El baloncesto como nunca antes.",
-    img: "https://i.pinimg.com/1200x/52/fa/8d/52fa8d0abe45ea147225c1635da13ed2.jpg",
-    url: "https://store.steampowered.com/app/2410920/NBA_2K25/",
-    interval: 1200,
-    store: "Steam",
-  },
-  {
-    title: "Tony Hawk's Pro Skater 3+4",
-    description: "La leyenda del skate regresa en HD.",
-    img: "https://i.pinimg.com/1200x/56/d3/57/56d357bf16d6281d20e23ebdff1cd46b.jpg",
-    url: "https://www.tonyhawkthegame.com/",
-    interval: 1400,
-    store: "Sitio oficial",
-  },
-  {
-    title: "Final Fantasy VII Remake",
-    description: "Una de las mejores historias RPG.",
-    img: "https://i.pinimg.com/736x/41/4b/c1/414bc1196f486ee795d1831e5a30766b.jpg",
-    url: "https://store.steampowered.com/app/1462040/FINAL_FANTASY_VII_REMAKE_INTERGRADE/",
-    interval: 1600,
-    store: "Steam",
-  },
-  {
-    title: "Persona 3 Reload",
-    description: "Revive el clásico con gráficos modernos.",
-    img: "https://i.pinimg.com/1200x/f7/89/7f/f7897f22ccbcf3c2bb0fc9831f833b7d.jpg",
-    url: "https://store.steampowered.com/app/2161700/Persona_3_Reload/",
-    interval: 1800,
-    store: "Steam",
-  },
-  {
-    title: "The Elder Scrolls IV: Oblivion",
-    description: "Un RPG clásico de mundo abierto.",
-    img: "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/04/oblivion-remastered-best-pc-graphics-settings.jpg",
-    url: "https://store.steampowered.com/app/22330/The_Elder_Scrolls_IV_Oblivion_Game_of_the_Year_Edition/",
-    interval: 2000,
+    title: "Baldur's Gate 3",
+    description: "RPG épico lleno de decisiones y aventuras.",
+    img: "https://i.pinimg.com/736x/5b/ab/fe/5babfec49ab95a4da577134321be4e41.jpg",
+    previews: [
+      "https://i.pinimg.com/1200x/ef/5b/38/ef5b3811931796fd422faaf4aae17570.jpg",
+      "https://i.pinimg.com/1200x/53/ec/49/53ec49ccbd661cc0b1cdd3dd13b9e781.jpg",
+      "https://i.pinimg.com/1200x/6d/9e/3a/6d9e3ae87814f74aaac58d7b6db58700.jpg",
+    ],
+    url: "https://store.steampowered.com/app/1086940/Baldurs_Gate_3/",
     store: "Steam",
   },
   {
     title: "Dragon's Dogma II",
-    description: "Aventura épica llena de dragones.",
-    img: "https://i.pinimg.com/1200x/7b/78/74/7b787426d4e9e291786e0a0356f8aa0d.jpg",
+    description: "Una aventura épica llena de dragones y acción.",
+    img: "https://i.pinimg.com/1200x/62/60/4f/62604ff1b96dc70a2b9b6f92e9eefcfe.jpg",
+    previews: [
+      "https://i.pinimg.com/1200x/cc/c3/95/ccc395139fa01bc09c6c425d9f4a0a79.jpg",
+      "https://i.pinimg.com/1200x/42/6c/9d/426c9d04dfc6c1fb0132343acbadbb78.jpg",
+      "https://i.pinimg.com/1200x/a9/5c/28/a95c28ff372b60a90339db2451de2e08.jpg",
+    ],
     url: "https://store.steampowered.com/app/2054970/Dragons_Dogma_2/",
-    interval: 2200,
+    store: "Steam",
+  },
+  {
+    title: "Red Dead Redemption 2",
+    description:
+      "Una epopeya del viejo oeste con narrativa profunda, mundo abierto inmersivo y personajes inolvidables.",
+    img: "https://i.pinimg.com/736x/7c/02/42/7c024249ce814af78fe074578e8dc22a.jpg",
+    previews: [
+      "https://example.com/rdr2-preview1.jpg",
+      "https://example.com/rdr2-preview2.jpg",
+      "https://example.com/rdr2-preview3.jpg",
+    ],
+    url: "https://store.steampowered.com/app/1174180/Red_Dead_Redemption_2/",
     store: "Steam",
   },
 ];
 
 const HeroSection = () => {
-  const [games, setGames] = useState([]);
+  const [games] = useState(defaultGames);
+  const [selectedGame, setSelectedGame] = useState(defaultGames[0]);
+  const [mainImage, setMainImage] = useState(selectedGame.img);
 
   useEffect(() => {
-    const storedGames = localStorage.getItem("gamesDb");
-    if (storedGames) {
-      setGames(JSON.parse(storedGames));
-    } else {
-      setGames(defaultGames);
-      localStorage.setItem("gamesDb", JSON.stringify(defaultGames));
-    }
-  }, []);
+    setMainImage(selectedGame.img);
+  }, [selectedGame]);
 
   return (
-    <>
-    {/* carrousel */}
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        minHeight: "100vh",
-        padding: "20px",
-        boxSizing: "border-box",
-      }}
-    >
-      <div style={{ width: "100%", maxWidth: "900px" }}>
-        <Carousel indicators controls pause="hover">
-          {defaultGames.map((game, index) => (
-            <Carousel.Item key={index} interval={game.interval}>
-              <img
-                src={game.img}
-                alt={game.title}
+    <Container fluid className="text-light p-4">
+      <Row className="align-items-center glass-dark ">
+        {/* Imagen grande */}
+        <Col md={8}>
+          <Image
+            className="hero-image"
+            src={mainImage}
+            alt={selectedGame.title}
+            fluid
+            rounded
+            style={{
+              maxHeight: "70vh",
+              objectFit: "cover",
+              width: "100%",
+              objectPosition: "center",
+            }}
+          />
+        </Col>
+
+        {/* Info y previews */}
+        <Col md={4}>
+          <h2 className="text-light text-shadow">{selectedGame.title}</h2>
+          <p>{selectedGame.description}</p>
+
+          <div
+            className="glass d-flex gap-2 mb-3"
+            onMouseLeave={() => setMainImage(selectedGame.img)}
+          >
+            {selectedGame.previews.map((preview, i) => (
+              <Image
+                key={i}
+                src={preview}
+                alt={`preview-${i}`}
                 style={{
-                  display: "block",
-                  width: "100%",
-                  maxHeight: "60vh",
-                  objectFit: "cover",
-                  borderRadius: "10px",
-                  justifyContent: "center",
+                  width: "25%",
+                  cursor: "pointer",
+                  border: mainImage === preview ? "2px solid #0d6efd" : "none",
                 }}
+                onMouseEnter={() => setMainImage(preview)}
+                onClick={() => setMainImage(preview)}
               />
-              <Carousel.Caption
-                style={{
-                  backgroundColor: "rgba(0,0,0,0.6)",
-                  padding: "15px",
-                  borderRadius: "10px",
-                  bottom: "20px",
-                }}
+            ))}
+          </div>
+
+          <Button
+            variant="primary"
+            onClick={() => window.open(selectedGame.url, "_blank")}
+          >
+            Comprar en {selectedGame.store}
+          </Button>
+
+          <div className="glass-dark  mt-4">
+            {games.map((game, idx) => (
+              <Button
+                key={idx}
+                variant={
+                  game.title === selectedGame.title
+                    ? "warning"
+                    : "outline-danger"
+                }
+                size="md"
+                className="me-2 mt-2"
+                onClick={() => setSelectedGame(game)}
               >
-                <h3>{game.title}</h3>
-                <p>{game.description}</p>
-                <Button
-                  variant="primary"
-                  onClick={() => window.open(game.url, "_blank")}
-                >
-                  Comprar en {game.store || "Tienda"}
-                </Button>
-              </Carousel.Caption>
-            </Carousel.Item>
-          ))}
-        </Carousel>
-      </div>
-    </div>
-    {/* catalogo */}
-     <div>
-    {games.map((game, index) => (
-      <p key={index}>{game.titulo}</p>
-    ))}
-  </div>
-    </>
+                {game.title}
+              </Button>
+            ))}
+          </div>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
