@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 import { buscarUsuarioPorEmail } from "../../services/userServices";
 import { useUser } from "../../context/UserContext";
 
-function FormLogin({ onLogin }) {
+function FormLogin({ onLogin, onClose }) {
   const { setUser } = useUser();
   const {
     register,
@@ -41,6 +41,7 @@ function FormLogin({ onLogin }) {
     const usuarioLogueado = {
       id: usuario.id,
       nombre: usuario.nombreUsuario,
+      rol: usuario.rol,
       email: data.email,
       loginAt: new Date().toISOString(),
     };
@@ -95,6 +96,19 @@ function FormLogin({ onLogin }) {
             },
           })}
         />
+        {/* Link para recuperar contraseña */}
+        <Form.Text className="text-muted">
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              if (onClose) onClose();
+              navigate("/recuperar");
+            }}
+          >
+            ¿Olvidaste tu contraseña?
+          </a>
+        </Form.Text>
         <Form.Control.Feedback type="invalid">
           {errors.password?.message}
         </Form.Control.Feedback>
