@@ -5,14 +5,14 @@ import { NavLink, useNavigate } from "react-router";
 import logoNav from "../assets/logo.png";
 import AuthModal from "../mod/AuthModal";
 import { useUser } from "../context/UserContext";
-// import useStorage from "../utils/LocalStorage";
+import { FaSignOutAlt } from "react-icons/fa";
 
 // --------------
 function Header() {
   const navigate = useNavigate();
   const { user, setUser } = useUser();
   return (
-    <Navbar expand="lg" bg="dark" data-bs-theme="dark">
+    <Navbar expand="lg" className="glass-darker" data-bs-theme="dark">
       <Container fluid>
         <Navbar.Brand href="/">
           <img
@@ -41,13 +41,19 @@ function Header() {
                   <Nav.Link as={NavLink} to="/admin">
                     Administración
                   </Nav.Link>
+                  <Nav.Link as={NavLink} to="/cart">
+                    🛒 Carrito
+                  </Nav.Link>
                 </>
               ) : (
                 <>
                   <Nav.Link as={NavLink} to="/admin" disabled>
                     Administración
                   </Nav.Link>
-                  <Nav.Link variant="" className="ms-5">
+                  <Nav.Link as={NavLink} to="/cart" disabled>
+                    🛒 Carrito
+                  </Nav.Link>
+                  <Nav.Link className="ms-5">
                     Estás como <strong>invitado</strong>
                   </Nav.Link>
                 </>
@@ -60,16 +66,19 @@ function Header() {
                 <Nav.Link disabled>Hola, {user.nombre} 🤙🫡</Nav.Link>
               </Nav>
               <Button
+                size="md"
+                className="ms-2"
+                variant="outline-danger"
                 onClick={() => {
                   setUser(null);
                   navigate("/");
                 }}
               >
-                Cerrar sesión
+                <FaSignOutAlt className="me-2" />
               </Button>
             </>
           ) : (
-            <AuthModal />
+            <AuthModal className="" />
           )}
         </Navbar.Collapse>
       </Container>

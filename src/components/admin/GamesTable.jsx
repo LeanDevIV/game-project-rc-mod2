@@ -236,10 +236,10 @@ function GamesTable() {
       <Row className="g-2 mt-2">
         <Col md={2}>
           <Form.Control
-            type="text"
+            type="number"
             placeholder="ID"
-            value={newGame.id}
-            onChange={(e) => handleChange(e, "titulo")}
+            value={Date.now()%100000} // ID único basado en timestamp
+            onChange={(e) => handleChange(e, "id")}
           />
         </Col>
         <Col md={2}>
