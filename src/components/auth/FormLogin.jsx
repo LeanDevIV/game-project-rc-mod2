@@ -38,13 +38,14 @@ function FormLogin({ onLogin }) {
       toast.error("Contraseña incorrecta.");
       return;
     }
-
     const usuarioLogueado = {
+      id: usuario.id,
+      nombre: usuario.nombreUsuario,
       email: data.email,
       loginAt: new Date().toISOString(),
     };
 
-    sessionStorage.setItem("usuario", JSON.stringify(usuarioLogueado));
+    sessionStorage.setItem("user", JSON.stringify(usuarioLogueado));
     setUser(usuarioLogueado);
     toast.success("Inicio de sesión exitoso ✅");
     // 👉 avisamos al modal

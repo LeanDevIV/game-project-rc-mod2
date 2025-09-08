@@ -2,10 +2,10 @@ import { useState } from "react";
 import { Button, Modal, Tabs, Tab } from "react-bootstrap";
 import FormLogin from "../components/auth/FormLogin";
 import FormRegister from "../components/auth/FormRegister";
-import  useStorage  from "../utils/LocalStorage";
+import useStorage from "../utils/LocalStorage";
 
 function AuthModal() {
-    const [user, setUser] = useStorage("user", null, "session");
+  const [_, setUser] = useStorage("user", null, "session");
   const [show, setShow] = useState(false);
   const [activeKey, setActiveKey] = useState("login"); // controla la tab activa
 
@@ -14,10 +14,6 @@ function AuthModal() {
     setActiveKey(key); // al abrir podés elegir si arranca en login o registro
     setShow(true);
   };
-//   const handleLogin = (usuarioLogueado) => {
-//   setUser(usuarioLogueado); // guarda en sessionStorage
-//   handleClose(); // cierra el modal
-// };
 
   return (
     <>
@@ -25,10 +21,12 @@ function AuthModal() {
       <Button variant="outline-primary" onClick={() => handleShow("login")}>
         Iniciar sesión
       </Button>{" "}
-      <Button variant="outline-secondary" onClick={() => handleShow("register")}>
+      <Button
+        variant="outline-secondary"
+        onClick={() => handleShow("register")}
+      >
         Registrarse
       </Button>
-
       {/* Modal */}
       <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
@@ -44,10 +42,12 @@ function AuthModal() {
             fill
           >
             <Tab eventKey="login" title="Login">
-              <FormLogin onLogin={(user)=>{
-                setUser(user);
-                handleClose();}
-              }/>
+              <FormLogin
+                onLogin={(user) => {
+                  setUser(user);
+                  handleClose();
+                }}
+              />
             </Tab>
             <Tab eventKey="register" title="Registro">
               <FormRegister />
