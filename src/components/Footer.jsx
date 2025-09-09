@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Logo from "../assets/logo.png";
+import { Link } from "react-router-dom";
+import Nav from "react-bootstrap/Nav"; // ✅ importamos Nav de bootstrap
 
 const Footer = () => {
   const [weather, setWeather] = useState(null);
   const [error, setError] = useState("");
 
-  const API_KEY = import.meta.env.VITE_OPENWEATHER_KEY; // ⚠️ pon tu clave en .env.local
+  const API_KEY = import.meta.env.VITE_OPENWEATHER_KEY; // ⚠️ tu API key en .env.local
   const city = "San Miguel de Tucuman";
 
   useEffect(() => {
@@ -60,31 +62,20 @@ const Footer = () => {
             )}
           </div>
 
-          {/* Columna 3 */}
+          {/* Columna 3: Enlaces */}
           <div className="col-md-4 mb-3">
             <h5>Enlaces útiles</h5>
-            <ul className="list-unstyled">
-              <li>
-                <a href="#" style={{ color: "#9bd4ff" }}>
-                  Noticias
-                </a>
-              </li>
-              <li>
-                <a href="#" style={{ color: "#9bd4ff" }}>
-                  Reseñas
-                </a>
-              </li>
-              <li>
-                <a href="#" style={{ color: "#9bd4ff" }}>
-                  Foro
-                </a>
-              </li>
-              <li>
-                <a href="#" style={{ color: "#9bd4ff" }}>
-                  Contacto
-                </a>
-              </li>
-            </ul>
+            <Nav className="flex-column">
+              <Nav.Link as={Link} to="/" style={{ color: "#9bd4ff" }}>
+                Home
+              </Nav.Link>
+              <Nav.Link as={Link} to="/acerca" style={{ color: "#9bd4ff" }}>
+                Acerca de nosotros
+              </Nav.Link>
+              <Nav.Link as={Link} to="/contacto" style={{ color: "#9bd4ff" }}>
+                Contacto
+              </Nav.Link>
+            </Nav>
           </div>
         </div>
 
