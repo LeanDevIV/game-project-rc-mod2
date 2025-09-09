@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Logo from "../assets/logo.png";
 
 const Footer = () => {
   const [weather, setWeather] = useState(null);
@@ -31,21 +32,20 @@ const Footer = () => {
   }, [API_KEY]);
 
   return (
-    <footer
-      className="py-4 mt-5"
-      style={{
-        background: "linear-gradient(135deg, #2c2c2c, #1e3a8a)",
-        color: "#f1f1f1",
-      }}
-    >
+    <footer className="footer-glass py-4">
       <div className="container">
         <div className="row text-center text-md-start">
           {/* Columna 1 */}
           <div className="col-md-4 mb-3">
-            <div style={{ fontSize: "1.5rem", fontWeight: "bold" }}>
-              🎮 GameZone
-            </div>
-            <p>El mejor portal de noticias y reseñas de videojuegos.</p>
+            <img
+              src={Logo}
+              alt="Logo"
+              style={{ width: "90px", height: "40px" }}
+            />
+            <p>
+              Tu portal ideal para noticias, reseñas y la mejor experiencia al
+              comprar videojuegos.
+            </p>
           </div>
 
           {/* Columna 2: Clima */}
@@ -90,7 +90,7 @@ const Footer = () => {
 
         <hr className="border-light" />
         <div className="text-center">
-          <small>&copy; 2025 GameZone. Todos los derechos reservados.</small>
+          <small>&copy; 2025 VentoGaming. Todos los derechos reservados.</small>
         </div>
       </div>
     </footer>
