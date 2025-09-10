@@ -4,9 +4,14 @@ const gamesDb = [
     titulo: "The Legend of Zelda: Breath of the Wild",
     genero: "Aventura",
     publicado: true,
-    destacado: false,
+    destacado: true,
     año: 2017,
     precio: 59.99,
+    previews: [
+      "https://i.pinimg.com/1200x/75/39/3f/75393f96f8f238522179bd5d9222a65e.jpg",
+      "https://i.pinimg.com/1200x/ea/8f/71/ea8f710f2abcae53784ce59df6c1d5be.jpg",
+      "https://i.pinimg.com/736x/3b/52/5b/3b525b51ce6d6b91a555a80fcf41597d.jpg",
+    ],
     descripcion:
       "Un juego de mundo abierto donde exploras Hyrule con total libertad, resolviendo puzzles, combatiendo enemigos y descubriendo secretos.",
     img: "https://i.pinimg.com/1200x/31/59/2d/31592dd53c1d4976a8d5cadfd3fd07c5.jpg",
@@ -91,17 +96,17 @@ const gamesDb = [
     descripcion:
       "Una épica historia en el lejano oeste donde encarnas a Arthur Morgan, miembro de la banda de Van der Linde.",
     img: "https://i.pinimg.com/736x/d1/13/9b/d1139b1ee12965f315652a3eb970aa28.jpg",
-     trailer:"https://www.youtube.com/embed/gmA6MrX81z4" ,
-    editora:"Rockstar Games",
-    desarrolladora:"Rockstar Games",
-    lanzamiento:"26/10/2018",
+    trailer: "https://www.youtube.com/embed/gmA6MrX81z4",
+    editora: "Rockstar Games",
+    desarrolladora: "Rockstar Games",
+    lanzamiento: "26/10/2018",
     previews: [
       "https://i.pinimg.com/736x/cc/35/a7/cc35a7bf47aa0ec7718ed1f72316662d.jpg",
       "https://i.pinimg.com/736x/c1/4e/f8/c14ef838ade60682b37eb7ee66cd76ef.jpg",
       "https://i.pinimg.com/736x/e2/f4/da/e2f4dac577a337dd84b74f20593d20ef.jpg",
     ],
   },
-   {
+  {
     id: 705,
     titulo: "Resident Evil 4 Remake",
     genero: "Terror",
@@ -112,7 +117,7 @@ const gamesDb = [
     descripcion:
       "Leon S. Kennedy regresa en una versión renovada del clásico de terror y acción con gráficos de última generación.",
     img: "https://i.pinimg.com/736x/6c/fc/92/6cfc9279823b78bea232ef1408586ac5.jpg",
-     trailer:"https://www.youtube.com/embed/E69tKrfEQag" ,
+    trailer: "https://www.youtube.com/embed/E69tKrfEQag",
 
     previews: [
       "https://i.pinimg.com/1200x/9a/f0/8d/9af08dda32c9c201d8ae6c9442d6fef1.jpg",
@@ -131,10 +136,10 @@ const gamesDb = [
     descripcion:
       "Explora un mundo subterráneo oscuro y hermoso lleno de criaturas extrañas, secretos y desafiantes combates.",
     img: "https://i.pinimg.com/736x/31/2f/30/312f3058eabeffcd4da12fc063074b01.jpg",
-     trailer:"https://www.youtube.com/embed/zw47_q9wbBE" ,
-    editora:"Nintendo",
-    desarrolladora:"Monolith Soft",
-    lanzamiento:"03/03/2017",
+    trailer: "https://www.youtube.com/embed/zw47_q9wbBE",
+    editora: "Nintendo",
+    desarrolladora: "Monolith Soft",
+    lanzamiento: "03/03/2017",
   },
   {
     id: 703,
@@ -160,7 +165,7 @@ const gamesDb = [
       "Un shinobi en busca de venganza en un Japón fantástico lleno de enemigos letales y duelos intensos.",
     img: "https://i.pinimg.com/1200x/df/53/88/df538832dfe1c6f849f3f914071f3c41.jpg",
   },
- 
+
   {
     id: 706,
     titulo: "Cyberpunk 2077",
@@ -193,16 +198,22 @@ const gamesDb = [
     destacado: true,
     año: 2013,
     precio: 29.99,
+    trailer: "https://www.youtube.com/embed/QkkoHAzjnUs",
     descripcion:
       "Tres protagonistas, una ciudad viva y un sinfín de actividades en el icónico Los Santos.",
     img: "https://i.pinimg.com/736x/5c/09/09/5c0909173a1524c8270bf87557e1a7c6.jpg",
+    previews: [
+      "https://i.pinimg.com/1200x/37/18/c3/3718c38fc4e202c223ab3e7e99f04a35.jpg",
+      "https://i.pinimg.com/1200x/ee/e5/51/eee5511a62405a73011388118267a879.jpg",
+      "https://i.pinimg.com/1200x/a0/bb/78/a0bb786971f382a152a56c230be7a341.jpg",
+    ],
   },
   {
     id: 709,
     titulo: "The Witcher 3: Wild Hunt",
     genero: "Estrategia",
     publicado: true,
-    destacado: true,
+    destacado: false,
     año: 2015,
     precio: 39.99,
     descripcion:
@@ -286,7 +297,7 @@ const gamesDb = [
     titulo: "Silent Hill 2",
     genero: "Terror",
     publicado: true,
-    destacado: true,
+    destacado: false,
     año: 2001,
     precio: 29.99,
     descripcion:
