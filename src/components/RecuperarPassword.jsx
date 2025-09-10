@@ -3,9 +3,14 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import toast from "react-hot-toast";
 import { buscarUsuarioPorEmail } from "../services/userServices";
+import { Container } from "react-bootstrap";
 
 const RecuperarPassword = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   const onSubmit = (data) => {
     const usuario = buscarUsuarioPorEmail(data.email);
@@ -15,11 +20,13 @@ const RecuperarPassword = () => {
     }
 
     // 👉 En un backend real acá mandarías un mail con token
-    toast.success("Se envió un correo con instrucciones para recuperar tu contraseña.");
+    toast.success(
+      "Se envió un correo con instrucciones para recuperar tu contraseña."
+    );
   };
 
   return (
-    <div className="container my-4 glass-dark p-4 rounded">
+    <Container className="container my-4 glass-dark p-4 rounded text-center">
       <h2 className="text-light">Recuperar contraseña</h2>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Form.Group className="mb-3" controlId="formRecoverEmail">
@@ -38,7 +45,7 @@ const RecuperarPassword = () => {
           Recuperar
         </Button>
       </Form>
-    </div>
+    </Container>
   );
 };
 
