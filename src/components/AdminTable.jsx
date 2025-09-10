@@ -1,5 +1,4 @@
-// AdminTable.jsx
-import React, { useState } from "react";
+import  { useState } from "react";
 import gamesDb from "../db/gamesDB";
 import { Table, Button, Form, Container, Row, Col } from "react-bootstrap";
 import useStorage from "../utils/LocalStorage"

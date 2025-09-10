@@ -11,10 +11,9 @@ export function CartProvider({ children }) {
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
-  // Agregar producto
   const addToCart = (product) => {
     setCart((prev) => {
-      // Si ya existe, actualiza cantidad
+      // Si ya existe (PREV), actualiza cantidad
       const existing = prev.find((item) => item.id === product.id);
       if (existing) {
         return prev.map((item) =>
@@ -23,7 +22,7 @@ export function CartProvider({ children }) {
             : item
         );
       }
-      // Si no existe, lo agrega con cantidad 1
+      // Si no existe (PREV), lo agrega con cantidad 1
       return [...prev, { ...product, quantity: 1 }];
     });
   };
