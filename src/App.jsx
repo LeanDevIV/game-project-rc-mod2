@@ -31,11 +31,10 @@ const App = () => {
                 minHeight: "100vh",
               }}
             >
-              {/* Props en header y Approuter para autentificar login/out */}
-              <Header></Header>
-              <AppRouter></AppRouter>
+              <Header />
+              <AppRouter />
             </main>
-            <Footer></Footer>
+            <Footer />
             <Toaster position="top-center" reverseOrder={false} />
           </div>
         </CartProvider>
