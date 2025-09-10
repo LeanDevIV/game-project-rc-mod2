@@ -1,6 +1,4 @@
-// Dependencias
-import { Button, Container, Form, Nav, Navbar } from "react-bootstrap";
-
+import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import { NavLink, useNavigate } from "react-router";
 import logoNav from "../assets/logo.png";
 import AuthModal from "../mod/AuthModal";
@@ -63,7 +61,7 @@ function Header() {
           {user ? (
             <>
               <Nav>
-                <Nav.Link disabled>Hola, {user.nombre} 🤙🫡</Nav.Link>
+                <Nav.Link disabled> Hola, {user.nombre}🫡</Nav.Link>
               </Nav>
               <Button
                 size="md"
@@ -78,7 +76,7 @@ function Header() {
               </Button>
             </>
           ) : (
-            <AuthModal className="" />
+            <AuthModal />
           )}
         </Navbar.Collapse>
       </Container>

@@ -8,7 +8,7 @@ const Footer = () => {
   const [weather, setWeather] = useState(null);
   const [error, setError] = useState("");
 
-  const API_KEY = import.meta.env.VITE_OPENWEATHER_KEY; // ⚠️ tu API key en .env.local
+  const API_KEY = import.meta.env.VITE_OPENWEATHER_KEY; //  tu API key en .env.local
   const city = "San Miguel de Tucuman";
 
   useEffect(() => {

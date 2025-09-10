@@ -1,4 +1,3 @@
-// 📦 Dependencias
 import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -11,7 +10,7 @@ import {
 import ROLES from "../../constants/roles";
 
 function FormRegister() {
-  // 📝 Configuración del hook useForm
+  //  Configuración del hook useForm
   const {
     register,
     handleSubmit,
@@ -29,7 +28,7 @@ function FormRegister() {
 
   const navigate = useNavigate();
 
-  // 🚀 Función que maneja el submit del formulario
+  //  Función que maneja el submit del formulario
 
   function onSubmit(data) {
     try {
@@ -47,7 +46,7 @@ function FormRegister() {
         createdAt: new Date().toISOString(),
       };
 
-      // 🚨 Validar email duplicado
+      //  Validar email duplicado
       if (buscarUsuarioPorEmail(nuevoUsuario.email)) {
         toast.error("Este usuario ya existe");
         return;
@@ -66,7 +65,7 @@ function FormRegister() {
     }
   }
 
-  // 🎨 Renderizado del formulario
+  //  Renderizado del formulario
   return (
     <Form onSubmit={handleSubmit(onSubmit)} className="px-4">
       {/* Nombre de usuario */}
