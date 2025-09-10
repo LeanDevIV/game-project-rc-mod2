@@ -1,6 +1,6 @@
 const gamesDb = [
   {
-    id: "270",
+    id: 270,
     titulo: "The Legend of Zelda: Breath of the Wild",
     genero: "Aventura",
     publicado: true,
@@ -10,9 +10,13 @@ const gamesDb = [
     descripcion:
       "Un juego de mundo abierto donde exploras Hyrule con total libertad, resolviendo puzzles, combatiendo enemigos y descubriendo secretos.",
     img: "https://i.pinimg.com/1200x/31/59/2d/31592dd53c1d4976a8d5cadfd3fd07c5.jpg",
+    trailer: "https://www.youtube.com/embed/zw47_q9wbBE",
+    editora: "Nintendo",
+    desarrolladora: "Monolith Soft",
+    lanzamiento: "03/03/2017",
   },
   {
-    id: "123",
+    id: 123,
     titulo: "God of War Ragnarök",
     genero: "Accion",
     publicado: true,
@@ -22,9 +26,13 @@ const gamesDb = [
     descripcion:
       "Kratos y Atreus continúan su viaje en la mitología nórdica enfrentando a dioses y monstruos en un épico desenlace.",
     img: "https://i.pinimg.com/736x/dc/ad/bf/dcadbf12865e4df00d89d2e84e3344dd.jpg",
+    trailer: "https://www.youtube.com/embed/C44_HrseDSs",
+    editora: "Sony",
+    desarrolladora: "Santa Monica Studio",
+    lanzamiento: "09/11/2022",
   },
   {
-    id: "308",
+    id: 308,
     titulo: "Minecraft",
     genero: "Aventura",
     publicado: true,
@@ -34,9 +42,13 @@ const gamesDb = [
     descripcion:
       "Juego de bloques que permite construir, explorar, sobrevivir y dejar volar la imaginación en mundos infinitos.",
     img: "https://i.pinimg.com/1200x/c2/38/63/c238631081cafc4b3b5c6bea2a68f5ab.jpg",
+    trailer: "https://www.youtube.com/embed/NG-5L34HqOs",
+    editora: "Mojang",
+    desarrolladora: "Mojang",
+    lanzamiento: "18/05/2009",
   },
   {
-    id: "509",
+    id: 509,
     titulo: "Elden Ring",
     genero: "Aventura",
     publicado: true,
@@ -46,9 +58,14 @@ const gamesDb = [
     descripcion:
       "Una aventura oscura creada junto a George R.R. Martin con un extenso mundo abierto lleno de desafíos, jefes y secretos.",
     img: "https://i.pinimg.com/1200x/82/8e/0b/828e0b822038dfa8e178126af226aa1b.jpg",
+    trailer: "https://www.youtube.com/embed/CptaXqVY6-E",
+    editora: "FromSoftware",
+    desarrolladora: "FromSoftware",
+    lanzamiento: "25/02/2022",
   },
+
   {
-    id: "165",
+    id: 165,
     titulo: "Counter-Strike 2",
     genero: "Accion",
     publicado: true,
@@ -58,9 +75,13 @@ const gamesDb = [
     descripcion:
       "Versión renovada del clásico FPS competitivo con mejoras gráficas, físicas realistas y el mismo espíritu competitivo.",
     img: "https://i.pinimg.com/736x/3e/6d/98/3e6d987032186a812e4fdfbd055583b6.jpg",
+    trailer: "https://www.youtube.com/embed/JZwlvtMWUgc",
+    editora: "Valve",
+    desarrolladora: "Valve corporation",
+    lanzamiento: "27/09/2023",
   },
   {
-    id: "701",
+    id: 701,
     titulo: "Red Dead Redemption 2",
     genero: "Accion",
     publicado: true,
@@ -70,9 +91,37 @@ const gamesDb = [
     descripcion:
       "Una épica historia en el lejano oeste donde encarnas a Arthur Morgan, miembro de la banda de Van der Linde.",
     img: "https://i.pinimg.com/736x/d1/13/9b/d1139b1ee12965f315652a3eb970aa28.jpg",
+     trailer:"https://www.youtube.com/embed/gmA6MrX81z4" ,
+    editora:"Rockstar Games",
+    desarrolladora:"Rockstar Games",
+    lanzamiento:"26/10/2018",
+    previews: [
+      "https://i.pinimg.com/736x/cc/35/a7/cc35a7bf47aa0ec7718ed1f72316662d.jpg",
+      "https://i.pinimg.com/736x/c1/4e/f8/c14ef838ade60682b37eb7ee66cd76ef.jpg",
+      "https://i.pinimg.com/736x/e2/f4/da/e2f4dac577a337dd84b74f20593d20ef.jpg",
+    ],
+  },
+   {
+    id: 705,
+    titulo: "Resident Evil 4 Remake",
+    genero: "Terror",
+    publicado: true,
+    destacado: true,
+    año: 2023,
+    precio: 59.99,
+    descripcion:
+      "Leon S. Kennedy regresa en una versión renovada del clásico de terror y acción con gráficos de última generación.",
+    img: "https://i.pinimg.com/736x/6c/fc/92/6cfc9279823b78bea232ef1408586ac5.jpg",
+     trailer:"https://www.youtube.com/embed/E69tKrfEQag" ,
+
+    previews: [
+      "https://i.pinimg.com/1200x/9a/f0/8d/9af08dda32c9c201d8ae6c9442d6fef1.jpg",
+      "https://i.pinimg.com/1200x/c8/f8/e6/c8f8e6da5feafd0088c7316131a849e9.jpg",
+      "https://i.pinimg.com/1200x/cb/64/33/cb6433755009b6486494a75cab8c321f.jpg",
+    ],
   },
   {
-    id: "702",
+    id: 702,
     titulo: "Hollow Knight",
     genero: "Estrategia",
     publicado: true,
@@ -82,9 +131,13 @@ const gamesDb = [
     descripcion:
       "Explora un mundo subterráneo oscuro y hermoso lleno de criaturas extrañas, secretos y desafiantes combates.",
     img: "https://i.pinimg.com/736x/31/2f/30/312f3058eabeffcd4da12fc063074b01.jpg",
+     trailer:"https://www.youtube.com/embed/zw47_q9wbBE" ,
+    editora:"Nintendo",
+    desarrolladora:"Monolith Soft",
+    lanzamiento:"03/03/2017",
   },
   {
-    id: "703",
+    id: 703,
     titulo: "Dark Souls III",
     genero: "Accion",
     publicado: true,
@@ -96,7 +149,7 @@ const gamesDb = [
     img: "https://i.pinimg.com/736x/4a/79/cd/4a79cdbea328414c2d3f1a39c8cbc9c5.jpg",
   },
   {
-    id: "704",
+    id: 704,
     titulo: "Sekiro: Shadows Die Twice",
     genero: "Accion",
     publicado: true,
@@ -107,20 +160,9 @@ const gamesDb = [
       "Un shinobi en busca de venganza en un Japón fantástico lleno de enemigos letales y duelos intensos.",
     img: "https://i.pinimg.com/1200x/df/53/88/df538832dfe1c6f849f3f914071f3c41.jpg",
   },
+ 
   {
-    id: "705",
-    titulo: "Resident Evil 4 Remake",
-    genero: "Terror",
-    publicado: true,
-    destacado: true,
-    año: 2023,
-    precio: 59.99,
-    descripcion:
-      "Leon S. Kennedy regresa en una versión renovada del clásico de terror y acción con gráficos de última generación.",
-    img: "https://i.pinimg.com/736x/6c/fc/92/6cfc9279823b78bea232ef1408586ac5.jpg",
-  },
-  {
-    id: "706",
+    id: 706,
     titulo: "Cyberpunk 2077",
     genero: "Accion",
     publicado: true,
@@ -132,7 +174,7 @@ const gamesDb = [
     img: "https://i.pinimg.com/736x/a8/79/6d/a8796d724693c7cbaf57c789deb41cdf.jpg",
   },
   {
-    id: "707",
+    id: 707,
     titulo: "Fortnite",
     genero: "Estrategia",
     publicado: true,
@@ -144,7 +186,7 @@ const gamesDb = [
     img: "https://i.pinimg.com/736x/e6/e6/ab/e6e6abc5799bc473d8651fab80aa12a3.jpg",
   },
   {
-    id: "708",
+    id: 708,
     titulo: "Grand Theft Auto V",
     genero: "Accion",
     publicado: true,
@@ -156,7 +198,7 @@ const gamesDb = [
     img: "https://i.pinimg.com/736x/5c/09/09/5c0909173a1524c8270bf87557e1a7c6.jpg",
   },
   {
-    id: "709",
+    id: 709,
     titulo: "The Witcher 3: Wild Hunt",
     genero: "Estrategia",
     publicado: true,
@@ -168,7 +210,7 @@ const gamesDb = [
     img: "https://i.pinimg.com/736x/35/3a/95/353a9510ac9ea519a767898612fdb581.jpg",
   },
   {
-    id: "710",
+    id: 710,
     titulo: "Overwatch 2",
     genero: "Estrategia",
     publicado: true,
@@ -180,7 +222,7 @@ const gamesDb = [
     img: "https://i.pinimg.com/736x/44/c7/0f/44c70fc2192133fc4441fafa88ed6a7a.jpg",
   },
   {
-    id: "711",
+    id: 711,
     titulo: "Assassin’s Creed Valhalla",
     genero: "Aventura",
     publicado: true,
@@ -192,7 +234,7 @@ const gamesDb = [
     img: "https://i.pinimg.com/1200x/4a/10/91/4a1091ede9f5290c2432d4038094a11c.jpg",
   },
   {
-    id: "712",
+    id: 712,
     titulo: "FIFA 23",
     genero: "Deportes / Fútbol",
     publicado: true,
@@ -204,7 +246,7 @@ const gamesDb = [
     img: "https://i.pinimg.com/736x/17/42/b2/1742b28aa0558a186d6cb08450b34786.jpg",
   },
   {
-    id: "713",
+    id: 713,
     titulo: "Call of Duty: Modern Warfare II",
     genero: "Accion",
     publicado: true,
@@ -216,7 +258,7 @@ const gamesDb = [
     img: "https://i.pinimg.com/736x/aa/11/18/aa11186dc69287ff7192992845d8585b.jpg",
   },
   {
-    id: "801",
+    id: 801,
     titulo: "Outlast",
     genero: "Terror",
     publicado: true,
@@ -228,7 +270,7 @@ const gamesDb = [
     img: "https://i.pinimg.com/736x/c1/bd/fe/c1bdfe03ddeb0d9ed241dc88c94bad0a.jpg",
   },
   {
-    id: "802",
+    id: 802,
     titulo: "Amnesia: The Dark Descent",
     genero: "Terror",
     publicado: true,
@@ -240,7 +282,7 @@ const gamesDb = [
     img: "https://i.pinimg.com/736x/ba/55/1e/ba551e8d34bc39b115a5c16f786e1dd3.jpg",
   },
   {
-    id: "803",
+    id: 803,
     titulo: "Silent Hill 2",
     genero: "Terror",
     publicado: true,
@@ -252,7 +294,7 @@ const gamesDb = [
     img: "https://i.pinimg.com/736x/4f/ca/5b/4fca5bcb1e0c627e4748c9086e5b133b.jpg",
   },
   {
-    id: "804",
+    id: 804,
     titulo: "Dead Space (Remake)",
     genero: "Terror",
     publicado: true,
@@ -264,7 +306,7 @@ const gamesDb = [
     img: "https://i.pinimg.com/736x/7a/5b/66/7a5b666f03a51492522d49375e105acc.jpg",
   },
   {
-    id: "805",
+    id: 805,
     titulo: "The Evil Within",
     genero: "Terror",
     publicado: true,
@@ -276,7 +318,7 @@ const gamesDb = [
     img: "https://i.pinimg.com/736x/9b/f5/94/9bf59400769fa4c69406b5602919711c.jpg",
   },
   {
-    id: "806",
+    id: 806,
     titulo: "Phasmophobia",
     genero: "Terror",
     publicado: true,
