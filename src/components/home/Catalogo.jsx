@@ -36,65 +36,67 @@ const Catalogo = () => {
             <Carousel indicators={false}>
               {slides.map((grupo, idx) => (
                 <Carousel.Item style={{ height: "100%" }} key={idx}>
-                  <div className="d-flex justify-content-center gap-3">
+                  <div className="row justify-content-center g-3">
                     {grupo.map((game) => (
-                      <Card
+                      <div
                         key={game.id}
-                        bg="black"
-                        text="light"
-                        style={{ width: "14rem" }}
-                        className=" glass rounded-3 shadow-sm"
+                        className="col-10 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center"
                       >
-                        <Card.Img
-                          variant="top"
-                          src={game.img}
-                          alt={game.titulo}
-                          style={{ height: "200px", objectFit: "cover" }}
-                        />
-                        <Card.Body className="d-flex flex-column justify-content-between">
-                          {/* Titulo de tarjeta */}
-                          <div>
-                            <Card.Title className="text-center mb-3 fs-5">
-                              {game.titulo}
-                            </Card.Title>
-                          </div>
-                          {/* Botones de tarjetas */}
-                          <div className="d-flex flex-column gap-2 mt-auto">
-                            <Link
-                              to={`/game/${game.id}`}
-                              className="btn btn-outline-light"
-                            >
-                              Ver detalle
-                            </Link>
+                        <Card
+                          bg="black"
+                          text="light"
+                          style={{ width: "14rem" }}
+                          className="glass rounded-3 shadow-sm"
+                        >
+                          <Card.Img
+                            variant="top"
+                            src={game.img}
+                            alt={game.titulo}
+                            style={{ height: "200px", objectFit: "cover" }}
+                          />
+                          <Card.Body className="d-flex flex-column justify-content-between">
+                            <div>
+                              <Card.Title className="text-center mb-3 fs-5">
+                                {game.titulo}
+                              </Card.Title>
+                            </div>
+                            <div className="d-flex flex-column gap-2 mt-auto">
+                              <Link
+                                to={`/game/${game.id}`}
+                                className="btn btn-outline-light"
+                              >
+                                Ver detalle
+                              </Link>
 
-                            <Button
-                              variant="primary"
-                              onClick={() => {
-                                handleAddToCart(game);
-                                toast.success(
-                                  `${game.titulo} añadido al carrito`
-                                );
-                              }}
-                              disabled={!game.publicado}
-                            >
-                              <FaShoppingCart className="me-2" />
-                              Añadir
-                            </Button>
+                              <Button
+                                variant="primary"
+                                onClick={() => {
+                                  handleAddToCart(game);
+                                  toast.success(
+                                    `${game.titulo} añadido al carrito`
+                                  );
+                                }}
+                                disabled={!game.publicado}
+                              >
+                                <FaShoppingCart className="me-2" />
+                                Añadir
+                              </Button>
 
-                            <Button
-                              onClick={() => {
-                                addToFavorites(game);
-                                toast.success(
-                                  `${game.titulo} añadido a favoritos`
-                                );
-                              }}
-                              variant="outline-warning"
-                            >
-                              <FaStar className="me-2" />
-                            </Button>
-                          </div>
-                        </Card.Body>
-                      </Card>
+                              <Button
+                                onClick={() => {
+                                  addToFavorites(game);
+                                  toast.success(
+                                    `${game.titulo} añadido a favoritos`
+                                  );
+                                }}
+                                variant="outline-warning"
+                              >
+                                <FaStar className="me-2" />
+                              </Button>
+                            </div>
+                          </Card.Body>
+                        </Card>
+                      </div>
                     ))}
                   </div>
                 </Carousel.Item>
