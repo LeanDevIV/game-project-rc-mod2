@@ -9,17 +9,17 @@ import infoAboutUs from "../db/infoAboutUs";
 function AboutUs() {
   return (
     <>
-      <h2 className="text-center my-4" style={{ color: "#ffffffff" }}>
-        ¡Conoce a nuestro equipo! 
+      <h2 className="text-center my-4" style={{ color: "#efebe7ff" }}>
+        ¡Conoce a nuestro equipo!
       </h2>
 
-      <Row xs={1} md={3} className="g-4">
+      <Row xs={1} md={3} className="g-4 mx-4">
         {infoAboutUs.map((data, idx) => (
-          <Col key={idx}>
+          <Col key={idx} className="d-flex justify-content-center">
             <Card
-              className="text-dark shadow-lg"
+              className="text-dark  shadow-lg"
               style={{
-                width: "100%",
+                width: "18rem",
                 transition: "transform 0.3s, box-shadow 0.3s",
                 cursor: "pointer",
               }}
@@ -37,8 +37,16 @@ function AboutUs() {
                 src={data.imagen}
                 style={{ height: "250px", objectFit: "cover" }}
               />
-              <Card.Body className="text-center">
-                <Card.Title style={{ fontWeight: "bold", fontSize: "1.3rem" }}>
+              <Card.Body
+                style={{
+                  background:
+                    "linear-gradient(45deg, #a3a3a7ff 0%, #121254ff 50%, #000823ff 100%)",
+                }}
+              >
+                <Card.Title
+                  className="text-light"
+                  style={{ fontWeight: "bold", fontSize: "1.3rem" }}
+                >
                   {data.nombre}
                 </Card.Title>
                 <div className="d-flex justify-content-center gap-3 mt-3">
