@@ -1,22 +1,17 @@
 import { useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useNavigate,useParams } from "react-router-dom";
 import { Container, Card, Button, Row, Col, Image } from "react-bootstrap";
 import gamesDb from "../constants/gamesDb";
 
 const DetalleJuego = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const juego = gamesDb.find((i) => i.id === parseInt(id));
   const [mainContent, setMainContent] = useState("trailer");
 
   if (!juego) {
-    return (
-      <Container className="text-center mt-5 text-light">
-        <h2>Juego no encontrado</h2>
-        <Link to="/" className="btn btn-outline-light mt-3">
-          Volver al catálogo
-        </Link>
-      </Container>
-    );
+    navigate("/404");
+    return;
   }
 
   return (

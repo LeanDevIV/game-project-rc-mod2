@@ -64,19 +64,21 @@ const HeroSection = () => {
             className="glass d-flex gap-2 mb-3"
             onMouseLeave={() => setMainImage(selectedGame.img)}
           >
-            {selectedGame.previews.map((preview, i) => (
-              <Image
-                key={i}
-                src={preview}
-                alt={`preview-${i}`}
-                style={{
-                  width: "25%",
-                  cursor: "pointer",
-                  border: mainImage === preview ? "2px solid #0d6efd" : "none",
-                }}
-                onMouseEnter={() => setMainImage(preview)}
-              />
-            ))}
+            {Array.isArray(selectedGame.previews) &&
+              selectedGame.previews.map((preview, juego) => (
+                <Image
+                  key={juego}
+                  src={preview}
+                  alt={`preview-${juego}`}
+                  style={{
+                    width: "25%",
+                    cursor: "pointer",
+                    border:
+                      mainImage === preview ? "2px solid #0d6efd" : "none",
+                  }}
+                  onMouseEnter={() => setMainImage(preview)}
+                />
+              ))}
           </div>
 
           <Link

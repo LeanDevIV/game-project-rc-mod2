@@ -63,7 +63,7 @@ const Catalogo = () => {
                             </div>
                             <div className="d-flex flex-column gap-2 mt-auto">
                               <Link
-                                to={`/game/${game.id}`}
+                                to={`/juego/${game.id}`}
                                 className="btn btn-outline-light"
                               >
                                 Ver detalle
