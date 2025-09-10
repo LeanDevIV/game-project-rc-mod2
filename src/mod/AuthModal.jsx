@@ -49,6 +49,7 @@ function AuthModal() {
                   setUser(user);
                   handleClose();
                 }}
+                onClose={handleClose}
               />
             </Tab>
             <Tab eventKey="register" title="Registro">
