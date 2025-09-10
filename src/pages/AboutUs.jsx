@@ -9,7 +9,7 @@ import infoAboutUs from "../db/infoAboutUs";
 function AboutUs() {
   return (
     <>
-      <h2 className="text-center my-4" style={{ color: "#ff6f61" }}>
+      <h2 className="text-center my-4" style={{ color: "#ffffffff" }}>
         ¡Conoce a nuestro equipo! 
       </h2>
 
@@ -19,7 +19,7 @@ function AboutUs() {
             <Card
               className="text-dark shadow-lg"
               style={{
-                width: "18rem",
+                width: "100%",
                 transition: "transform 0.3s, box-shadow 0.3s",
                 cursor: "pointer",
               }}
