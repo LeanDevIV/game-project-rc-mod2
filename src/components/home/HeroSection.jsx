@@ -3,6 +3,7 @@ import { Container, Row, Col, Button, Image } from "react-bootstrap";
 import gamesDb from "../../constants/gamesDb";
 import { Link } from "react-router";
 import { useFavorites } from "../../context/FavoritesContext";
+import { useUser } from "../../context/UserContext";
 import { FaStar } from "react-icons/fa";
 import toast from "react-hot-toast";
 
@@ -10,7 +11,8 @@ const HeroSection = () => {
   const [games, setGames] = useState([]);
   const [selectedGame, setSelectedGame] = useState(null);
   const [mainImage, setMainImage] = useState("");
-  const { addToFavorites } = useFavorites();
+  const { addToFavorites, removeFromFavorites, favorites } = useFavorites();
+  const { user } = useUser();
 
   useEffect(() => {
     try {
@@ -85,12 +87,28 @@ const HeroSection = () => {
           </Link>
           <Button
             onClick={() => {
-              addToFavorites(selectedGame);
-              toast.success(`${selectedGame.titulo} añadido a favoritos`);
+              if (!user) {
+                toast.error("Debes iniciar sesión para añadir a favoritos");
+                return;
+              }
+              if (favorites.some((fav) => fav.id === selectedGame.id)) {
+                removeFromFavorites(selectedGame.id);
+                toast.error(`${selectedGame.titulo} eliminado de favoritos`);
+              } else {
+                addToFavorites(selectedGame);
+                toast.success(`${selectedGame.titulo} añadido a favoritos`);
+              }
             }}
             variant="outline-warning"
           >
-            <FaStar className="me-2" />
+            <FaStar
+              className="me-2"
+              color={
+                favorites.some((fav) => fav.id === selectedGame.id)
+                  ? "yellow"
+                  : "white"
+              }
+            />
           </Button>
 
           <div className="glass-dark  mt-4">

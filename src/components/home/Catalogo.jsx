@@ -5,12 +5,13 @@ import { useCart } from "../../context/CartContext";
 import toast from "react-hot-toast";
 import { useFavorites } from "../../context/FavoritesContext";
 import { Link } from "react-router-dom";
+import { useUser } from "../../context/UserContext";
 
 const Catalogo = () => {
   const { addToCart } = useCart();
-  const { addToFavorites } = useFavorites();
+  const { favorites, addToFavorites, removeFromFavorites } = useFavorites();
+  const { user } = useUser();
   const categorias = [...new Set(gamesDb.map((game) => game.genero))];
-
   const handleAddToCart = (game) => {
     addToCart(game);
   };
@@ -71,6 +72,12 @@ const Catalogo = () => {
                               <Button
                                 variant="primary"
                                 onClick={() => {
+                                  if (!user) {
+                                    toast.error(
+                                      "Debes iniciar sesión para añadir al carrito"
+                                    );
+                                    return;
+                                  }
                                   handleAddToCart(game);
                                   toast.success(
                                     `${game.titulo} añadido al carrito`
@@ -84,14 +91,36 @@ const Catalogo = () => {
 
                               <Button
                                 onClick={() => {
-                                  addToFavorites(game);
-                                  toast.success(
-                                    `${game.titulo} añadido a favoritos`
-                                  );
+                                  if (!user) {
+                                    toast.error(
+                                      "Debes iniciar sesión para añadir a favoritos"
+                                    );
+                                    return;
+                                  }
+                                  if (
+                                    favorites.some((fav) => fav.id === game.id)
+                                  ) {
+                                    removeFromFavorites(game.id);
+                                    toast.error(
+                                      `${game.titulo} eliminado de favoritos`
+                                    );
+                                  } else {
+                                    addToFavorites(game);
+                                    toast.success(
+                                      `${game.titulo} añadido a favoritos`
+                                    );
+                                  }
                                 }}
                                 variant="outline-warning"
                               >
-                                <FaStar className="me-2" />
+                                <FaStar
+                                  className="me-2"
+                                  color={
+                                    favorites.some((fav) => fav.id === game.id)
+                                      ? "yellow"
+                                      : "white"
+                                  }
+                                />
                               </Button>
                             </div>
                           </Card.Body>

@@ -29,13 +29,14 @@ function Header() {
             <Nav.Link as={NavLink} to="/">
               Inicio
             </Nav.Link>
-            <Nav.Link as={NavLink} to="/favoritos">
-              Favoritos
-            </Nav.Link>
 
             <Nav className="ms-auto">
               {user ? (
                 <>
+                  {" "}
+                  <Nav.Link as={NavLink} to="/favoritos">
+                    Favoritos
+                  </Nav.Link>
                   <Nav.Link as={NavLink} to="/admin">
                     Administración
                   </Nav.Link>
@@ -45,15 +46,9 @@ function Header() {
                 </>
               ) : (
                 <>
-                  <Nav.Link as={NavLink} to="/admin" disabled>
-                    Administración
-                  </Nav.Link>
-                  <Nav.Link as={NavLink} to="/carrito" disabled>
-                    🛒 Carrito
-                  </Nav.Link>
-                  <Nav.Link className="ms-5">
+                  <span className="ms-5 align-self-center text-light">
                     Estás como <strong>invitado</strong>
-                  </Nav.Link>
+                  </span>
                 </>
               )}
             </Nav>
