@@ -1,4 +1,3 @@
-// 📦 Dependencias
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useForm } from "react-hook-form";
@@ -24,9 +23,9 @@ function FormLogin({ onLogin, onClose }) {
 
   const navigate = useNavigate();
 
-  // 🚀 Función que maneja el submit del login
+  //  Función que maneja el submit del login
   function onSubmit(data) {
-    // 🔎 Buscar usuario en localStorage
+    //  Buscar usuario en localStorage
     const usuario = buscarUsuarioPorEmail(data.email);
 
     if (!usuario) {
@@ -49,7 +48,6 @@ function FormLogin({ onLogin, onClose }) {
     sessionStorage.setItem("user", JSON.stringify(usuarioLogueado));
     setUser(usuarioLogueado);
     toast.success("Inicio de sesión exitoso ✅");
-    // 👉 avisamos al modal
     if (onLogin) {
       onLogin(usuarioLogueado);
     }
@@ -58,7 +56,7 @@ function FormLogin({ onLogin, onClose }) {
     navigate("/");
   }
 
-  // 🎨 Renderizado del formulario
+  //  Renderizado del formulario
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       {/* Campo Email */}
@@ -71,7 +69,7 @@ function FormLogin({ onLogin, onClose }) {
           {...register("email", {
             required: "El email es requerido",
             pattern: {
-              value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, // regex para validar email
+              value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, 
               message: "Debe ingresar un email válido",
             },
           })}

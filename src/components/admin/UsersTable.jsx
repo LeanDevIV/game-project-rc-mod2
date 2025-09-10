@@ -27,29 +27,11 @@ function UsersTable() {
     }
   };
 
-  // Agregar juego
-//   const handleAdd = () => {
-//     if (!newGame.titulo)
-//       return Swal.fire("Error", "El título es obligatorio", "error");
-//     setUsuarios([
-//       ...usuarios,
-//       { ...newGame, precio: parseFloat(newGame.precio) },
-//     ]);
-//     setNewGame({
-//       titulo: "",
-//       genero: "",
-//       año: "",
-//       precio: "",
-//       descripcion: "",
-//     });
-//     Swal.fire("Agregado", "El juego se agregó correctamente", "success");
-//   };
-
-  // Borrar juego
+  // Borrar usuario
   const handleDelete = (index) => {
     Swal.fire({
       title: "¿Seguro?",
-      text: "Este juego será eliminado.",
+      text: "Este usuario será eliminado.",
       icon: "warning",
       showCancelButton: true,
       confirmButtonText: "Sí, eliminar",
@@ -57,7 +39,7 @@ function UsersTable() {
     }).then((result) => {
       if (result.isConfirmed) {
         setUsuarios(usuarios.filter((_, i) => i !== index));
-        Swal.fire("Eliminado", "El juego ha sido borrado.", "success");
+        Swal.fire("Eliminado", "El usuario ha sido borrado.", "success");
       }
     });
   };
@@ -67,7 +49,7 @@ function UsersTable() {
     if (editingIndex === index) {
       Swal.fire({
         title: "¿Guardar cambios?",
-        text: "Se actualizará la información del juego.",
+        text: "Se actualizará la información del usuario.",
         icon: "question",
         showCancelButton: true,
         confirmButtonText: "Guardar",
@@ -167,57 +149,9 @@ function UsersTable() {
               )}
             </tr>
           ))}
+          {usuarios.length === 0 && (<tr><td colSpan="4" className="text-center">No hay usuarios registrados.</td></tr>)}
         </tbody>
       </Table>
-
-      {/* <h4 className="mt-4">Agregar nuevo juego</h4>
-      <Row className="g-2 mt-2">
-        <Col md={2}>
-          <Form.Control
-            type="text"
-            placeholder="Título"
-            value={newGame.titulo}
-            onChange={(e) => handleChange(e, "titulo")}
-          />
-        </Col>
-        <Col md={2}>
-          <Form.Control
-            type="text"
-            placeholder="Género"
-            value={newGame.genero}
-            onChange={(e) => handleChange(e, "genero")}
-          />
-        </Col>
-        <Col md={1}>
-          <Form.Control
-            type="number"
-            placeholder="Año"
-            value={newGame.año}
-            onChange={(e) => handleChange(e, "año")}
-          />
-        </Col>
-        <Col md={1}>
-          <Form.Control
-            type="number"
-            placeholder="Precio"
-            value={newGame.precio}
-            onChange={(e) => handleChange(e, "precio")}
-          />
-        </Col>
-        <Col md={4}>
-          <Form.Control
-            type="text"
-            placeholder="Descripción"
-            value={newGame.descripcion}
-            onChange={(e) => handleChange(e, "descripcion")}
-          />
-        </Col>
-        <Col md={2}>
-          <Button variant="primary" className="w-100" onClick={handleAdd}>
-            Agregar
-          </Button>
-        </Col>
-      </Row> */}
     </Container>
   );
 }

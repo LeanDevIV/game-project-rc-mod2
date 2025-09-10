@@ -7,11 +7,12 @@ import useStorage from "../utils/LocalStorage";
 function AuthModal() {
   const [_, setUser] = useStorage("user", null, "session");
   const [show, setShow] = useState(false);
-  const [activeKey, setActiveKey] = useState("login"); // controla la tab activa
+  // controla la tab activa
+  const [activeKey, setActiveKey] = useState("login"); 
 
   const handleClose = () => setShow(false);
   const handleShow = (key = "login") => {
-    setActiveKey(key); // al abrir podés elegir si arranca en login o registro
+    setActiveKey(key); 
     setShow(true);
   };
 
@@ -30,19 +31,19 @@ function AuthModal() {
 
       {/* Modal */}
       <Modal show={show} onHide={handleClose} centered>
-        <Modal.Header className="bg-dark text-white" closeButton>
+        <Modal.Header className="glass-modal text-glow text-black" closeButton>
           <Modal.Title className="w-100 text-center">
             {activeKey === "login" ? "Iniciar sesión" : "Crear cuenta"}
           </Modal.Title>
         </Modal.Header>
-        <Modal.Body className="bg-dark text-white">
+        <Modal.Body className="glass-modal text-white">
           <Tabs
             activeKey={activeKey}
             onSelect={(k) => setActiveKey(k)}
-            className="mb-3 d-flex flex-row text-white justify-content-between"
+            className="mb-3 d-flex flex-row text-dark bold justify-content-between"
             fill
           >
-            <Tab className="text-white" eventKey="login" title="Login">
+            <Tab  eventKey="login" title="Login">
               <FormLogin
                 onLogin={(user) => {
                   setUser(user);
