@@ -39,7 +39,7 @@ function Header() {
                   <Nav.Link as={NavLink} to="/admin">
                     Administración
                   </Nav.Link>
-                  <Nav.Link as={NavLink} to="/cart">
+                  <Nav.Link as={NavLink} to="/carrito">
                     🛒 Carrito
                   </Nav.Link>
                 </>
@@ -48,7 +48,7 @@ function Header() {
                   <Nav.Link as={NavLink} to="/admin" disabled>
                     Administración
                   </Nav.Link>
-                  <Nav.Link as={NavLink} to="/cart" disabled>
+                  <Nav.Link as={NavLink} to="/carrito" disabled>
                     🛒 Carrito
                   </Nav.Link>
                   <Nav.Link className="ms-5">

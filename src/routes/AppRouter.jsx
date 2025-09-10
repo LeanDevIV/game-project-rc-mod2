@@ -17,7 +17,7 @@ const AppRouter = () => {
       <Route path="/favoritos" element={<FavoritesPage />}></Route>
       <Route path="/admin" element={<AdminPage />}></Route>
       <Route path="/recuperar" element={<RecuperarPassword />}></Route>
-      <Route path="/Carrito" element={<CartPage />}></Route>
+      <Route path="/carrito" element={<CartPage />}></Route>
       <Route path="/juego/:id" element={<DetalleJuego />} />
       <Route path="/contacto" element={<ContactPage />} />
       <Route path="*" element={<Error404Page />} />
